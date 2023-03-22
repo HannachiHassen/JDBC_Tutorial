@@ -9,8 +9,9 @@ public final class JdbcUpdateDemo {
 	/**
      * 
      * @param args
+	 * @throws SQLException 
      */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws SQLException {
 		Connection myConn = null;
 		Statement myStmt = null;
 		ResultSet myRs = null;
@@ -98,8 +99,24 @@ public final class JdbcUpdateDemo {
 		
 	}
 
-	private static void close(Connection myConn, Statement myStmt, ResultSet myRs) {
-				
+	/**
+	 * 
+	 * @param myConn
+	 * @param myStmt
+	 * @param myRs
+	 * @throws SQLException
+	 */
+	private static void close(Connection myConn, Statement myStmt, ResultSet myRs) throws SQLException {
+		if (myRs !=null) {
+			myRs.close();
+		}
+		
+		if (myStmt !=null) {
+			myStmt.close();			
+		}
+		
+		if (myConn !=null) {
+			myConn.close();			
+		}
 	}
-
 }
