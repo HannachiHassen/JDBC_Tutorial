@@ -45,8 +45,7 @@ public final class JdbcInsertDemo {
 			"insert into employees " + 
 			"(last_name, first_name, email, department, salary) " + 
 			"values " + 
-			"('Wright', 'Eric', 'eric.wright@foo.com', 'HR', 33000.00)"
-			);
+			"('Wright', 'Eric', 'eric.wright@foo.com', 'HR', 33000.00)");
 			
 			myRs=myStmt.executeQuery("SELECT * FROM employees ORDER BY last_name");
 

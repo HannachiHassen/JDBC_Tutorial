@@ -24,12 +24,12 @@ Provider by database vendor
   
 <h5> Key class </h5>
 
- - java.sql.Connection
  - java.sql.DriverManager
+ - java.sql.Connection
+ - java.sql.Statement
  - java.sql.ResultSet
  - java.sql.DataSource (for connection pooling)
- - java.sql.Statement
- 
+
 ## Development Process
  
  1. Get a connection to database
@@ -56,7 +56,8 @@ jdbc:<driver protocol>:<driver connection detail>
 ## Step 2: Create a Statement object
  - The statement object is based on connection
  - it will be used later to execute SQL query
- 
+
+```
     import java.sql.*;
     ....
     String dbUrl = "jdbc:mysql://localhost:3306/demo";
@@ -65,10 +66,12 @@ jdbc:<driver protocol>:<driver connection detail>
     
     Connection myConn= DriverManager.getConnection();
     Statement myStmt = myConn.createStatement();
+```
     
 ## Step 3: Execute SQL Query
 - Pass in your SQL query
-     
+
+```    
     import java.sql.*;
     ....
     String dbUrl = "jdbc:mysql://localhost:3306/demo";
@@ -78,7 +81,8 @@ jdbc:<driver protocol>:<driver connection detail>
     Connection myConn= DriverManager.getConnection();
     Statement myStmt = myConn.createStatement();
     ResultSet myRs = myStmt.executeQuery("SELECT * FROM employees");
-    
+```
+ 
 ## Step 4: Process the Result Set
 -Result Set is initially placed before first row
 
