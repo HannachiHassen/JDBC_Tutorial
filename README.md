@@ -1,14 +1,13 @@
-## JDBC_Tutorial
+## JAVA Database Connection and MySQL Tutorial
 
 ## JDBC Architecture
 
-<h5>JDBC Driver:</h5>
-
-- Provider connection to a database
-- Converts JDBC calls to for specific database
+* JDBC Driver:
+    - Provider connection to a database
+    - Converts JDBC calls to for specific database
  
-<h5>JDBC Driver implementations:</h5>
-Provider by database vendor
+* JDBC Driver implementations:</h5>
+    - Provider by database vendor
 
 ## JDBC Driver Manager
 
@@ -18,17 +17,15 @@ Provider by database vendor
 
 ## JDBC API
 
-<h5>JDBC API is defined in the following packages</5>
-
-- java.sql and javax.sql
+* JDBC API is defined in the following packages</5>
+    - java.sql and javax.sql
   
-<h5> Key class </h5>
-
- - java.sql.DriverManager
- - java.sql.Connection
- - java.sql.Statement
- - java.sql.ResultSet
- - java.sql.DataSource (for connection pooling)
+* Key class:
+    - java.sql.DriverManager
+    - java.sql.Connection
+    - java.sql.Statement
+    - java.sql.ResultSet
+    - java.sql.DataSource (for connection pooling)
 
 ## Development Process
  
@@ -38,14 +35,14 @@ Provider by database vendor
  4. Process Result Set
  
 ## Step 1: Get a connection to a database
-- In order to connect to a database need a connection string in form of JDBC URL
-- Basic syntax:
+* In order to connect to a database need a connection string in form of JDBC URL
+* Basic syntax:
 
 ```
 jdbc:<driver protocol>:<driver connection detail>
 ```
   
- - Examples:
+* Examples:
  
  ```
  . MS SQL Server: jdbc:odbc:DemoDSN
@@ -54,8 +51,8 @@ jdbc:<driver protocol>:<driver connection detail>
  ```
 
 ## Step 2: Create a Statement object
- - The statement object is based on connection
- - it will be used later to execute SQL query
+* The statement object is based on connection
+* it will be used later to execute SQL query
 
 ```
     import java.sql.*;
@@ -69,7 +66,7 @@ jdbc:<driver protocol>:<driver connection detail>
 ```
     
 ## Step 3: Execute SQL Query
-- Pass in your SQL query
+* Pass in your SQL query
 
 ```    
     import java.sql.*;
@@ -84,13 +81,12 @@ jdbc:<driver protocol>:<driver connection detail>
 ```
  
 ## Step 4: Process the Result Set
--Result Set is initially placed before first row
+* Result Set is initially placed before first row
+* Method: ResultSet.next()
+    - moves forward one row
+    - returns true if there are more rows to process
 
--Method:ResultSet.next()
- - moves forward one row
- - returns true if there are more rows to process
-
--Looping through a result set
+* Looping through a result set
 
 ```
     ...
@@ -100,9 +96,9 @@ jdbc:<driver protocol>:<driver connection detail>
 	 }
 ```
 
--Collection of methods for reading data
-  - getXXX(columnName)
-  - getXX(columnIndex) one-based
+* Collection of methods for reading data
+    - getXXX(columnName)
+    - getXX(columnIndex) one-based
  
 ```
    ...
@@ -112,7 +108,15 @@ jdbc:<driver protocol>:<driver connection detail>
 		System.out.println(myRs.getString("first_name"));
 	 }
 ```
+## Prepared Statements
 
+* A Prepared Statement is a precompiled SQL statement
+* Prepared Statements provide the following benifits: 
+    - Makes it easier to set SQL parameters values
+    - Prevent against SQL dependency injection attacks
+    - May improve application performance 
+       * SQL Statement is precompiled
+     
 ## Built With
 
 * [Java](https://www.oracle.com/java/) - Java JDK
