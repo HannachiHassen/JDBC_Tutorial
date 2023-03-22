@@ -1,6 +1,6 @@
 ## JAVA Database Connection and MySQL Tutorial
 
-## JDBC Architecture
+## 1. JDBC Architecture
 
 * JDBC Driver:
     - Provider connection to a database
@@ -9,13 +9,13 @@
 * JDBC Driver implementations:</h5>
     - Provider by database vendor
 
-## JDBC Driver Manager
+## 2. JDBC Driver Manager
 
 - DriverManager helps to connect an application based on the database connection string
 - In JDBC 4.0 the JDBC drivers are automatically loaded based on the classpath
 - Legacy JDBC 3.0 Drivers have to be explicitly loaded with Class.forName(theDriverName)
 
-## JDBC API
+## 3. JDBC API
 
 * JDBC API is defined in the following packages</5>
     - java.sql and javax.sql
@@ -27,14 +27,14 @@
     - java.sql.ResultSet
     - java.sql.DataSource (for connection pooling)
 
-## Development Process
+## 4. Development Process
  
  1. Get a connection to database
  2. Create a Statement
  3. Execute SQL query
  4. Process Result Set
  
-## Step 1: Get a connection to a database
+##### Step 1: Get a connection to a database
 * In order to connect to a database need a connection string in form of JDBC URL
 * Basic syntax:
 
@@ -50,7 +50,7 @@ jdbc:<driver protocol>:<driver connection detail>
  . Mysql :        jdbc:mysql://localhost:3306/demodb
  ```
 
-## Step 2: Create a Statement object
+##### Step 2: Create a Statement object
 * The statement object is based on connection
 * it will be used later to execute SQL query
 
@@ -65,7 +65,7 @@ jdbc:<driver protocol>:<driver connection detail>
     Statement myStmt = myConn.createStatement();
 ```
     
-## Step 3: Execute SQL Query
+##### Step 3: Execute SQL Query
 * Pass in your SQL query
 
 ```    
@@ -80,7 +80,7 @@ jdbc:<driver protocol>:<driver connection detail>
     ResultSet myRs = myStmt.executeQuery("SELECT * FROM employees");
 ```
  
-## Step 4: Process the Result Set
+##### Step 4: Process the Result Set
 * Result Set is initially placed before first row
 * Method: ResultSet.next()
     - moves forward one row
@@ -108,7 +108,7 @@ jdbc:<driver protocol>:<driver connection detail>
 		System.out.println(myRs.getString("first_name"));
 	 }
 ```
-## Prepared Statements
+## 5. Prepared Statements
 
 * A Prepared Statement is a precompiled SQL statement
 * Prepared Statements provide the following benifits: 
@@ -116,6 +116,33 @@ jdbc:<driver protocol>:<driver connection detail>
     - Prevent against SQL dependency injection attacks
     - May improve application performance 
        * SQL Statement is precompiled
+     
+## 6. Stored Procedures
+* A group of SQL statements that perform a particular task
+* Normally created by the DBA (Database Administrator)
+* Created in a SQL language supported by the native database
+* Can have any combination of input, output, and input/output parameters
+    - Parameters:
+      - The JDBC API supports different parameters
+         - IN
+         - INOUT
+         - OUT
+* The stored procedure can also return result sets
+
+## 7. Transactions
+* A transaction is a unit of work
+* One or more SQL statements executed together
+    - Either all of the statements are executed - Commit
+    - Or one of the statements are executed - Rollback
+* By default, the database connection is to auto-commit
+     - Need to explicitly turn off auto-commit
+     
+     myConn.setAutoCommit(false);    
+* Developer controls commit or rollback
+
+    myConn.commit();
+    // or 
+    myConn.rollback(); 
      
 ## Built With
 

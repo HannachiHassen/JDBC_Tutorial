@@ -1,14 +1,17 @@
 package com.JDBC;
 
 import java.sql.*;
-
+/**
+ * 
+ * @author HASSEN
+ *
+ */
 public final class JdbcInsertDemo {
 
 	/**
 	 * Constructor
 	 */
-	public JdbcInsertDemo() {
-	}
+	public JdbcInsertDemo() {}
 
 	/**
 	 * 
