@@ -2,6 +2,11 @@ package com.JDBC;
 
 import java.sql.*;
 
+/**
+ * 
+ * @author HASSEN
+ *
+ */
 public final class JdbcUpdateDemo {
 
 	public JdbcUpdateDemo() {}
@@ -65,8 +70,9 @@ public final class JdbcUpdateDemo {
      * @param myConn
      * @param firstName
      * @param lastName
+	 * @throws SQLException 
      */
-	private static void displayEmployee(Connection myConn, String firstName, String lastName) {
+	private static void displayEmployee(Connection myConn, String firstName, String lastName) throws SQLException {
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
 		
@@ -96,7 +102,9 @@ public final class JdbcUpdateDemo {
 		catch (Exception exc) {
 			exc.printStackTrace();
 		}
-		
+		finally {
+			close(myStmt, myRs);
+		}		
 	}
 
 	/**
@@ -119,4 +127,14 @@ public final class JdbcUpdateDemo {
 			myConn.close();			
 		}
 	}
+	
+	/**
+	 * 
+	 * @param myStmt
+	 * @param myRs
+	 * @throws SQLException
+	 */
+	private static void close(PreparedStatement myStmt, ResultSet myRs) throws SQLException {
+		close(null, myStmt, myRs);		
+	}	
 }
