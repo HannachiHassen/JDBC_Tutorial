@@ -66,6 +66,35 @@ public final class JdbcUpdateDemo {
      * @param lastName
      */
 	private static void displayEmployee(Connection myConn, String firstName, String lastName) {
+		PreparedStatement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			/**
+			 * Prepare statement
+			 */
+			myStmt = myConn.prepareStatement("SELECT last_name, first_name, email FROM employees WHERE last_name=? AND first_name=?");
+
+			myStmt.setString(1, lastName);
+			myStmt.setString(2, firstName);
+			/**
+			 * Execute SQL Query
+			 */
+			myRs = myStmt.executeQuery();
+			/**
+			 * Process Result set
+			 */
+			while(myRs.next()) {
+				String theLastName = myRs.getString("last_name");
+				String theFirstName = myRs.getString("first_name");
+				String theEmail = myRs.getString("email");
+				
+				System.out.printf("%s %s, %s\n", theFirstName, theLastName, theEmail);
+			}
+		} 
+		catch (Exception exc) {
+			exc.printStackTrace();
+		}
 		
 	}
 
