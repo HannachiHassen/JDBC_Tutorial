@@ -6,11 +6,11 @@ import java.sql.*;
  * @author HASSEN
  *
  */
-public class JDBCTest {
+public class JDBCQuery {
 	/**
 	 * Constructor 
 	 */
-	private JDBCTest() {}
+	private JDBCQuery() {}
 	/**
 	 * 
 	 * @param args

@@ -136,13 +136,18 @@ jdbc:<driver protocol>:<driver connection detail>
     - Or one of the statements are executed - Rollback
 * By default, the database connection is to auto-commit
      - Need to explicitly turn off auto-commit
-     
-     myConn.setAutoCommit(false);    
+
+```
+myConn.setAutoCommit(false); 
+```
+        
 * Developer controls commit or rollback
 
+```
     myConn.commit();
     // or 
     myConn.rollback(); 
+```
      
 ## Built With
 
